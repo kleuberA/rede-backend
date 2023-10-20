@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 
 import rateLimit from "express-rate-limit";
+import { userRoute } from "../frameworks/express/routes/User";
 
 const app = express();
 const limiter = rateLimit({
@@ -20,6 +21,8 @@ app.use(
 );
 app.use(limiter);
 
+app.use("/api/v1", userRoute);
+
 app.use((_, res) => {
 	res.status(404).send({
 		message: "Não encontrado.",
@@ -27,6 +30,6 @@ app.use((_, res) => {
 	});
 });
 
-app.listen(3000, () => {
-	console.log(`🚀 Server running on http://localhost:${3000}`);
+app.listen(3001, () => {
+	console.log(`🚀 Server running on http://localhost:${3001}`);
 });

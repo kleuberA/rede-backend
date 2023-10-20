@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+    db-rede:
+        image: postgres:15
+        container_name: backend-rede
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: admin
+            POSTGRES_USER: admin
+            POSTGRES_DB: backenddb
+        volumes:
+            - ./data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
