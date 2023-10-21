@@ -22,6 +22,7 @@ export class CreateUserRepository implements UserRepository {
 		await prisma.user.create({
 			data: {
 				...user,
+				email: email.toLowerCase(),
 				password: passwordHashed,
 			},
 		});

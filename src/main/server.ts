@@ -3,6 +3,7 @@ import cors from "cors";
 
 import rateLimit from "express-rate-limit";
 import { userRoute } from "../frameworks/express/routes/User";
+import { authRouter } from "../frameworks/express/routes/auth/Auth";
 
 const app = express();
 const limiter = rateLimit({
@@ -22,6 +23,7 @@ app.use(
 app.use(limiter);
 
 app.use("/api/v1", userRoute);
+app.use("/api/v1", authRouter);
 
 app.use((_, res) => {
 	res.status(404).send({
