@@ -30,27 +30,45 @@ O projeto visa abranger as seguintes funcionalidades:
 
 Para fazer o deploy desse projeto rode
 
+1. Clone o repositório:
+
 ```bash
 git clone https://github.com/seu-usuario/seu-projeto.git
 cd seu-projeto
 ```
 
+2. Instale as dependências:
+
 ```bash
 npm install
 ```
+
+3. Configure as variáveis de ambiente:
+
+Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
 
 ```bash
 DATABASE_URL=postgresql://seu-usuario:senha@localhost:5432/seu-banco-de-dados
 JWT_SECRET=your-jwt-secret
 ```
 
+4. Configure o Docker para o Prisma:
+
+No arquivo docker-compose.yml, configure o serviço do banco de dados PostgreSQL de acordo com as informações do seu banco de dados.
+
+5. Inicie os containers do Docker:
+
 ```bash
 docker-compose up -d
 ```
 
+6. Aplicar migrações do Prisma:
+
 ```bash
 npx prisma migrate dev
 ```
+
+7. Inicie o servidor:
 
 ```bash
 npm run dev
